@@ -1,0 +1,27 @@
+{
+  "name": "tdd-exercise",
+  "version": "1.0.0",
+  "description": "​\r ## Objective\r ​\r To create a nodejs & express based service following TDD as the main approach.\r ​\r ## Requirements\r ​\r 1. get the list of all users\r 2. create a user\r 3. update user\r 4. delete user\r ​\r ## Model\r ​\r The user must have the following attributes:\r ​\r - firstName\r - lastName\r - age\r ​\r ## Contraints\r ​\r - firstName cannot be empty, must be a string and should have a min len of one character\r - lasttName cannot be empty, must be a string and should have a min len of one character\r - age must be a number bigger than 0",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha test/**/*.js --timeout=5000",
+    "cover": "nyc --reporter=html mocha test/**/*.js --timeout=5000"
+  },
+  "author": "Julian Soto",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^6.2.2",
+    "nyc": "^14.1.1",
+    "supertest": "^4.0.2"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cuid": "^2.1.6",
+    "express": "^4.17.1"
+  }
+}
