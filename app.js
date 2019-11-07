@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const bodyparser = require('body-parser');
 const cuid = require('cuid');
+const cors = require('cors');
 
 let users = [
     {
@@ -13,6 +14,7 @@ let users = [
 ];
 
 app.use(bodyparser.json());
+app.use(cors());
 
 app.get('/users/:id', (req, res, next) => {
     const { id } = req.params;
