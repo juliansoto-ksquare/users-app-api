@@ -5,7 +5,7 @@ const app = require('../app');
 describe('appointment app', () => {
     it('should return the list of all users', () => {
         supertest(app)
-        .get('/users')
+        .get('/api/users')
         .expect('Content-Type', /json/)
         .expect(200)
         .end((err, res) => {
@@ -26,7 +26,7 @@ describe('appointment app', () => {
 
     it('should create a new user and return the recently created user with a new id', () => {
         supertest(app)
-        .post('/users')
+        .post('/api/users')
         .send({
             firstName: 'Julian',
             lastName: 'Soto',
@@ -47,7 +47,7 @@ describe('appointment app', () => {
 
     it('should create a new user without first name and return an error', () => {
         supertest(app)
-        .post('/users')
+        .post('/api/users')
         .send({
             lastName: 'blah blah',
             age: 18
@@ -62,7 +62,7 @@ describe('appointment app', () => {
 
     it('should create a new user with an empty first name and return an error', () => {
         supertest(app)
-        .post('/users')
+        .post('/api/users')
         .send({
             firstName: '',
             lastName: 'blah',
@@ -78,7 +78,7 @@ describe('appointment app', () => {
 
     it('should create a new user without last name and return an error', () => {
         supertest(app)
-        .post('/users')
+        .post('/api/users')
         .send({
             firstName: 'blah blah',
             age: 18
@@ -93,7 +93,7 @@ describe('appointment app', () => {
 
     it('should create a new user with an empty last name and return an error', () => {
         supertest(app)
-        .post('/users')
+        .post('/api/users')
         .send({
             firstName: 'blah',
             lastName: '',
@@ -109,7 +109,7 @@ describe('appointment app', () => {
 
     it('should create a new user without age and return an error', () => {
         supertest(app)
-        .post('/users')
+        .post('/api/users')
         .send({
             firstName: 'blah blah',
             lastName: 'blah blah'
@@ -124,7 +124,7 @@ describe('appointment app', () => {
 
     it('should create a new user with an age less than 0 and return an error', () => {
         supertest(app)
-        .post('/users')
+        .post('/api/users')
         .send({
             firstName: 'blah blah',
             lastName: 'blah blah',
@@ -140,7 +140,7 @@ describe('appointment app', () => {
 
     it('should GET one single user', () => {
         supertest(app)
-        .get('/users/1')
+        .get('/api/users/1')
         .expect('Content-Type', /json/)
         .expect(200)
         .end((err, res) => {
@@ -154,7 +154,7 @@ describe('appointment app', () => {
 
     it('should return an error if user does not exist', () => {
         supertest(app)
-        .get('/users/0')
+        .get('/api/users/0')
         .expect('Content-Type', /json/)
         .expect(404)
         .end((err, res) => {
@@ -165,7 +165,7 @@ describe('appointment app', () => {
 
     it ('should update user first name and last name and return the updated user', () => {
         supertest(app)
-        .put('/users/1')
+        .put('/api/users/1')
         .send({
             firstName: 'Randy',
             lastName: 'Orton'
@@ -181,7 +181,7 @@ describe('appointment app', () => {
 
     it('should try to update a non existing user and return an error', () => {
         supertest(app)
-        .put('/users/0')
+        .put('/api/users/0')
         .expect('Content-Type', /json/)
         .expect(404)
         .end((err, res) => {
@@ -192,7 +192,7 @@ describe('appointment app', () => {
 
     it('should delete an existing user', () => {
         supertest(app)
-        .delete('/users/1')
+        .delete('/api/users/1')
         .expect(204)
         .end((err, res) => {
             if (err) throw err;
@@ -202,7 +202,7 @@ describe('appointment app', () => {
 
     it('should try to delete a non existing user and return an error', () => {
         supertest(app)
-        .delete('/users/0')
+        .delete('/api/users/0')
         .expect('Content-Type', /json/)
         .expect(404)
         .end((err, res) => {
@@ -213,7 +213,7 @@ describe('appointment app', () => {
 
     it('should get a list of all users', () => {
         supertest(app)
-        .get('/users')
+        .get('/api/users')
         .expect('Content-Type', /json/)
         .expect(200)
         .end((err, res) => {
